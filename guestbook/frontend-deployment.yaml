@@ -32,6 +32,6 @@ spec:
         - name: REDIS_MASTER_SERVICE_HOST
           value: redis-master
         - name: REDIS_SLAVE_SERVICE_HOST
-          value:  redis-replica
+          value: redis-replica
         ports:
         - containerPort: 80
