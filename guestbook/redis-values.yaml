@@ -1,0 +1,30 @@
+# values.yaml
+
+architecture: replication
+diagnosticMode.enabled: true
+
+global:
+  redis:
+    password: redispassword
+##
+auth.enabled: false
+auth.sentinel: false
+##
+commonLabels: { app: redis }
+##
+master:
+  ##count: 1
+  ##podLabels: { role: master }
+  persistence: 
+    enabled: false
+##
+replica:
+  replicaCount: 2
+  ##podLabels: { role: replica }
+  persistence: 
+    enabled: false
+##
+sentinel:
+  enabled: true
+  persistence:  
+    enabled: false
