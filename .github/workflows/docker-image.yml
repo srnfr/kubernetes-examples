@@ -34,4 +34,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: reytans/guestbook-ng:latest
+          tags: reytans/guestbook-ng:${GITHUB_REF##*/}-${{ github.run_number }}
