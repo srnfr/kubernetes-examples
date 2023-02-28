@@ -13,13 +13,12 @@ auth.sentinel: false
 commonLabels: { app: redis }
 ##
 master:
-  ##count: 1
   ##podLabels: { role: master }
   persistence: 
     enabled: false
 ##
 replica:
-  replicaCount: 2
+  replicaCount: 3
   ##podLabels: { role: replica }
   persistence: 
     enabled: false
