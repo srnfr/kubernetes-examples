@@ -15,8 +15,8 @@ if (isset($_GET['cmd']) === true) {
   header('Content-Type: application/json');
   if ($_GET['cmd'] == 'set') {
     $client = new Predis\Client(
-      ['tcp://$host']
-      [ 'replication' => 'sentinel', 'service' => 'mymaster' ]
+      ['tcp://$host'],
+      [ 'replication' => 'sentinel', 'service' => 'mymaster' ],
     );
 
     $client->set($_GET['key'], $_GET['value']);
@@ -27,8 +27,8 @@ if (isset($_GET['cmd']) === true) {
       $host = getenv('REDIS_SLAVE_SERVICE_HOST');
     }
     $client = new Predis\Client(
-      ['tcp://$host']
-      [ 'replication' => 'sentinel' ]
+      ['tcp://$host'],
+      [ 'replication' => 'sentinel' ],
     );
 
     $value = $client->get($_GET['key']);
