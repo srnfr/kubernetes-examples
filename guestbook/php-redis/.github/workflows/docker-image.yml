@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build and Push Docker Image for Sentinel
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: "guestbook/php-redis/"
+          context: .
           push: true
           file: ./Dockerfile
           tags: reytans/guestbook-ng:sentinel-v1
