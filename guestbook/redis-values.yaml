@@ -1,11 +1,8 @@
 # values.yaml
 
 architecture: replication
-diagnosticMode.enabled: true
+diagnosticMode.enabled: false
 
-global:
-  redis:
-    password: redispassword
 ##
 auth.enabled: false
 auth.sentinel: false
