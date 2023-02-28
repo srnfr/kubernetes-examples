@@ -14,7 +14,8 @@ if (isset($_GET['cmd']) === true) {
   }
   header('Content-Type: application/json');
   if ($_GET['cmd'] == 'set') {
-    $sentinels = ['tcp://'.$host.':26379'];
+    /* predis bug : https://github.com/predis/predis/issues/658 */
+    $sentinels = ['tcp://'.$host.':26379?password=redis-password'];
     $options = [ 
         'replication' => 'sentinel', 
         'service' => 'mymaster' , 
@@ -31,7 +32,8 @@ if (isset($_GET['cmd']) === true) {
     if (getenv('GET_HOSTS_FROM') == 'env') {
       $host = getenv('REDIS_SLAVE_SERVICE_HOST');
     }
-    $sentinels = ['tcp://'.$host.':6379'];
+    /* predis bug : https://github.com/predis/predis/issues/658 */
+    $sentinels = ['tcp://'.$host.':26379?password=redis-password'];
     $options = [ 
         'replication' => 'sentinel', 
         'parameters'  => ['database' => 0, 'password' => 'redis-password'],
