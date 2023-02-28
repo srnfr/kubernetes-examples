@@ -5,7 +5,7 @@ diagnosticMode.enabled: false
 
 global:
   redis:
-    password: ""
+    password: "redis-password"
 ##
 auth.enabled: false
 auth.sentinel: false
