@@ -13,7 +13,7 @@
 # limitations under the License.
 
 FROM php:apache
-RUN apt update && apt install -y gip zip unzip redis-tools
+RUN apt update && apt install -y gip zip unzip redis-tools vim
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN composer require predis/predis
