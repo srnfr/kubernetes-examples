@@ -34,4 +34,4 @@ jobs:
           context: "guestbook/php-redis/"
           push: true
           file: ./Dockerfile
-          tags: reytans/guestbook-ng:v1
+          tags: reytans/guestbook-ng:sentinel-v1
