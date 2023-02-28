@@ -12,10 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM php:5-apache
+FROM php:apache
+RUN apt update && apt install -y gip zip unzip
 
-RUN pear channel-discover pear.nrk.io
-RUN pear install nrk/Predis
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+RUN composer require predis/predis
 
 # If the container's stdio is connected to systemd-journald,
 # /proc/self/fd/{1,2} are Unix sockets and apache will not be able to open()
