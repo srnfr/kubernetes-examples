@@ -31,7 +31,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: "guestbook/php-redis/"
+          context: ./guestbook/php-redis
           push: true
-          file: ./Dockerfile
+          file: ./guestbook/php-redis/Dockerfile
           tags: reytans/guestbook-ng:sentinel-v1
