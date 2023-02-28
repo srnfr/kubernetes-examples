@@ -21,8 +21,9 @@ if (isset($_GET['cmd']) === true) {
         'service' => 'mymaster' , 
         'parameters'  => ['database' => 0, 'password' => 'redis-password'],
       ];
-    print_r($sentinels);
-    print_r($options);
+    /* print_r($sentinels);
+    print_r($options); */
+    
     $client = new Predis\Client($sentinels,$options);
 
     $client->set($_GET['key'], $_GET['value']);
@@ -38,8 +39,9 @@ if (isset($_GET['cmd']) === true) {
         'replication' => 'sentinel', 
         'parameters'  => ['database' => 0, 'password' => 'redis-password'],
       ];
-    print_r($sentinels);
-    print_r($options);
+    /* print_r($sentinels);
+    print_r($options);*/
+    
     $client = new Predis\Client($sentinels,$options);
 
     $value = $client->get($_GET['key']);
