@@ -16,7 +16,11 @@ if (isset($_GET['cmd']) === true) {
   if ($_GET['cmd'] == 'set') {
     $client = new Predis\Client(
       ['tcp://'.$host],
-      [ 'replication' => 'sentinel', 'service' => 'mymaster' ],
+      [ 
+        'replication' => 'sentinel', 
+        'service' => 'mymaster' , 
+        'parameters'  => ['database' => 0, 'password' => 'redis-password'],
+      ],
     );
 
     $client->set($_GET['key'], $_GET['value']);
@@ -28,7 +32,10 @@ if (isset($_GET['cmd']) === true) {
     }
     $client = new Predis\Client(
       ['tcp://'.$host],
-      [ 'replication' => 'sentinel' ],
+      [ 
+        'replication' => 'sentinel',
+        'parameters'  => ['database' => 0, 'password' => 'redis-password'],
+      ],
     );
 
     $value = $client->get($_GET['key']);
