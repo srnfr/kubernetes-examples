@@ -1,4 +1,4 @@
-name: ci
+name: Build and Push Docker Image
 
 on:
   push:
@@ -34,4 +34,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: reytans/guestbook-ng:${GITHUB_REF##*/}
+          tags: reytans/guestbook-ng:v1
