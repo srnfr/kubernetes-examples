@@ -3,10 +3,9 @@ name: Build and Push Docker Image for Sentinel
 on:
   push:
     branches:
-      - 'redis-sentinel'
-      
-    paths:
-      - guestbook/php-redis/**
+      - 'redis-sentinel'  
+##    paths:
+##      - guestbook/php-redis/**
 
 jobs:
   docker:
