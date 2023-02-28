@@ -3,6 +3,9 @@
 architecture: replication
 diagnosticMode.enabled: false
 
+global:
+  redis:
+    password: ""
 ##
 auth.enabled: false
 auth.sentinel: false
