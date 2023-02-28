@@ -1,6 +1,6 @@
-# Kubernetes Examples
+# Improved Guestbook from Kubernetes Examples
 
-This directory is forked.
+This directory is forked from the Well-known Kubernetes examples
 
 I've enhanced the Redis setup by setting up a sentinel redis cluster.
 
