@@ -10,16 +10,12 @@ global:
 auth.enabled: false
 auth.sentinel: false
 ##
-commonLabels: { app: redis }
-##
 master:
-  ##podLabels: { role: master }
   persistence: 
     enabled: false
 ##
 replica:
   replicaCount: 3
-  ##podLabels: { role: replica }
   persistence: 
     enabled: false
 ##
