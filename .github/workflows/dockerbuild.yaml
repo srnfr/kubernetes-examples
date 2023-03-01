@@ -50,5 +50,5 @@ jobs:
           context: ./guestbook/php-redis
           push: ${{ github.event_name != 'pull_request' }}
           file: ./guestbook/php-redis/Dockerfile
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ${{ github.run_number }},latest
           labels: ${{ steps.meta.outputs.labels }}
