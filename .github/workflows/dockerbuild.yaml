@@ -33,6 +33,7 @@ jobs:
             type=semver,pattern={{version}}
           
       - name: Login to Docker Hub
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
@@ -42,7 +43,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./guestbook/php-redis
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           file: ./guestbook/php-redis/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
