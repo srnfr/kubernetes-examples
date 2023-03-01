@@ -9,8 +9,9 @@ on:
       - guestbook/php-redis/**
 
 jobs:
-  docker:
+  build-and-push-docker:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v3
