@@ -10,43 +10,31 @@ Predis\Autoloader::register();
 if (isset($_GET['cmd']) === true) {
   $host = 'redis-sentinel';
   if (getenv('GET_HOSTS_FROM') == 'env') {
-    $host = getenv('REDIS_MASTER_SERVICE_HOST');
+    $host = getenv('REDIS_SENTINEL_SERVICE_HOST');
   }
   header('Content-Type: application/json');
+  
+  /* predis bug : https://github.com/predis/predis/issues/658 */
+  $sentinels = ['tcp://'.$host.':26379?password=redis-password'];
+  $options = [ 
+      'replication' => 'sentinel', 
+      'service' => 'mymaster' , 
+      'parameters'  => ['database' => 0, 'password' => 'redis-password'],
+  ];
+  
+  $client = new Predis\Client($sentinels,$options);
+  
   if ($_GET['cmd'] == 'set') {
-    /* predis bug : https://github.com/predis/predis/issues/658 */
-    $sentinels = ['tcp://'.$host.':26379?password=redis-password'];
-    $options = [ 
-        'replication' => 'sentinel', 
-        'service' => 'mymaster' , 
-        'parameters'  => ['database' => 0, 'password' => 'redis-password'],
-      ];
-    /* print_r($sentinels);
-    print_r($options); */
-    
-    $client = new Predis\Client($sentinels,$options);
 
     $client->set($_GET['key'], $_GET['value']);
     print('{"message": "Updated"}');
-  } else {
-    $host = 'redis-sentinel';
-    if (getenv('GET_HOSTS_FROM') == 'env') {
-      $host = getenv('REDIS_SLAVE_SERVICE_HOST');
-    }
-    /* predis bug : https://github.com/predis/predis/issues/658 */
-    $sentinels = ['tcp://'.$host.':26379?password=redis-password'];
-    $options = [ 
-        'replication' => 'sentinel', 
-        'parameters'  => ['database' => 0, 'password' => 'redis-password'],
-      ];
-    /* print_r($sentinels);
-    print_r($options);*/
     
-    $client = new Predis\Client($sentinels,$options);
-
+  } else {
+    
     $value = $client->get($_GET['key']);
     print('{"data": "' . $value . '"}');
   }
+  
 } else {
   phpinfo();
 } ?>
