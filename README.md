@@ -1,7 +1,10 @@
 # Improved Guestbook from Kubernetes Examples
 
 This directory is forked from the well-known Kubernetes examples.
-The idea is to build a more robust redis db without the need for persistent volumes.
+
+The goal is to build a *more robust redis db without persistent volumes*.
+
+![Architecture](./kubernetes-guestbook-with-redis-sentinel.png)
 
 I've enhanced the Redis setup by setting up a sentinel redis cluster :
 - new frontend image (up to date PHP and using a client redis sentinel client code)
@@ -13,4 +16,4 @@ See the branches for incremental changes.
 
 https://hub.docker.com/repository/docker/reytans/guestbook-ng is the frontend image replacement. 
 
-![Architecture](./kubernetes-guestbook-with-redis-sentinel.png)
+
