@@ -9,7 +9,8 @@ on:
       - guestbook/php-redis/**
 
 env: 
-   IMAGE_NAME: ${{ vars.IMAGE_NAME }}
+   IMAGE_NAME: reytans/guestbook-ng
+   ## ${{ vars.IMAGE_NAME }}
 
 jobs:
   build-and-push-image:
