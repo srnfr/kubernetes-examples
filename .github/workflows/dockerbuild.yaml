@@ -6,7 +6,7 @@ on:
       - 'redis-sentinel'
       
     paths:
-      - guestbook/php-redis/**
+      - guestbook/**
 
 env: 
    IMAGE_NAME: reytans/guestbook-ng
