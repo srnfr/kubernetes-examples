@@ -13,4 +13,4 @@ See the branches for incremental changes.
 
 https://hub.docker.com/repository/docker/reytans/guestbook-ng is the frontend image replacement. 
 
-![Architecture](./kubernetes-guestbook-with-redis-sentinel)
+![Architecture](./kubernetes-guestbook-with-redis-sentinel.png)
