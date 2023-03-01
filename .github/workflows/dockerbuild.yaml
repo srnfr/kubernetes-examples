@@ -8,10 +8,11 @@ on:
     paths:
       - guestbook/php-redis/**
 
-env: ${{ vars.IMAGE_NAME }}
+env: 
+   IMAGE_NAME: ${{ vars.IMAGE_NAME }}
 
 jobs:
-  build-and-push-docker:
+  build-and-push-image:
     runs-on: ubuntu-latest
     
     steps:
@@ -42,7 +43,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
-      - name: Build and push
+      - name: Build and push to Docker Hub
         uses: docker/build-push-action@v4
         with:
           context: ./guestbook/php-redis
