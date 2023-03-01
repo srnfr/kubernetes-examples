@@ -13,6 +13,7 @@
 # limitations under the License.
 
 FROM php:apache
+
 RUN apt update && apt install -y gip zip unzip redis-tools vim
 
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
@@ -28,3 +29,5 @@ RUN sed -i 's#CustomLog /proc/self/fd/1 combined#CustomLog "|/bin/cat" combined#
 ADD guestbook.php /var/www/html/guestbook.php
 ADD controllers.js /var/www/html/controllers.js
 ADD index.html /var/www/html/index.html
+
+EXPOSE 80
