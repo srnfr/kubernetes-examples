@@ -1,6 +1,6 @@
 # Improved Guestbook from Kubernetes Examples
 
-This directory is forked from the well-known Kubernetes examples.
+This directory is an **extract forked** from [the well-known Kubernetes examples](https://github.com/kubernetes/examples).
 
 The goal is to build a **more robust redis db without persistent volumes**.
 
