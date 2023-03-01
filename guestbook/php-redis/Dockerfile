@@ -31,3 +31,5 @@ ADD controllers.js /var/www/html/controllers.js
 ADD index.html /var/www/html/index.html
 
 EXPOSE 80
+
+MAINTAINER srnfr
