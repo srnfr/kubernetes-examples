@@ -8,7 +8,7 @@ require './vendor/predis/predis/autoload.php';
 Predis\Autoloader::register();
 
 if (isset($_GET['cmd']) === true) {
-  $host = 'redis-sentinel';
+  $host = 'redis';
   if (getenv('GET_HOSTS_FROM') == 'env') {
     $host = getenv('REDIS_SENTINEL_SERVICE_HOST');
   }
