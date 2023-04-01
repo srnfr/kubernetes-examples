@@ -11,7 +11,7 @@ if (isset($_GET['cmd']) === true) {
   $host = 'redis';
   if (getenv('GET_HOSTS_FROM') == 'env') {
     $host = getenv('REDIS_SENTINEL_SERVICE_HOST')?:'redis';
-  }:q
+  }
   
   
   if (getenv('REDIS_PWD')) {
