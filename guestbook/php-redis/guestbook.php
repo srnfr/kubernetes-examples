@@ -12,6 +12,13 @@ if (isset($_GET['cmd']) === true) {
   if (getenv('GET_HOSTS_FROM') == 'env') {
     $host = getenv('REDIS_SENTINEL_SERVICE_HOST');
   }
+  
+  if (getenv('REDIS_PWD')) {
+    $pwd = getenv('REDIS_PWD');
+  } else {
+    $pwd='redis-password';
+  }
+  
   header('Content-Type: application/json');
   
   /* predis bug : https://github.com/predis/predis/issues/658 */
@@ -20,7 +27,7 @@ if (isset($_GET['cmd']) === true) {
   $options = [ 
       'replication' => 'sentinel', 
       'service' => 'mymaster' , 
-      'parameters'  => ['database' => 0, 'password' => 'redis-password'],
+      'parameters'  => ['database' => 0, 'password' => $pwd],
   ];
   
   $client = new Predis\Client($sentinels,$options);
