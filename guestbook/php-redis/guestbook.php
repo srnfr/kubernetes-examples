@@ -22,23 +22,26 @@ if (isset($_GET['cmd']) === true) {
   header('Content-Type: application/json');
   
   /* predis bug : https://github.com/predis/predis/issues/658 */
-  $sentinels = ['tcp://'.$host.':26379?password='.$pwd];
+  // $sentinels = ['tcp://'.$host.':26379?password='.$pwd];
+  $sentinels = ['tcp://'.$host.':26379'];
   /* 6379=RO ; 26379=RW */
   $options = [ 
       'replication' => 'sentinel', 
       'service' => 'mymaster' , 
-      'parameters'  => ['database' => 0, 'password' => $pwd],
+      'parameters'  => ['database' => 0, 
+        //'password' => $pwd,
+       ],
   ];
-  
-  $client = new Predis\Client($sentinels,$options);
   
   if ($_GET['cmd'] == 'set') {
 
+    $client = new Predis\Client($sentinels,$options);
     $client->set($_GET['key'], $_GET['value']);
     print('{"message": "Updated"}');
     
   } else {
-    
+
+    $client = new Predis\Client('tcp://redis:6379');
     $value = $client->get($_GET['key']);
     print('{"data": "' . $value . '"}');
   }
