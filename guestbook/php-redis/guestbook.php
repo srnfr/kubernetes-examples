@@ -10,8 +10,9 @@ Predis\Autoloader::register();
 if (isset($_GET['cmd']) === true) {
   $host = 'redis';
   if (getenv('GET_HOSTS_FROM') == 'env') {
-    $host = getenv('REDIS_SENTINEL_SERVICE_HOST');
-  }
+    $host = getenv('REDIS_SENTINEL_SERVICE_HOST')?:'redis';
+  }:q
+  
   
   if (getenv('REDIS_PWD')) {
     $pwd = getenv('REDIS_PWD');
@@ -24,7 +25,6 @@ if (isset($_GET['cmd']) === true) {
   /* predis bug : https://github.com/predis/predis/issues/658 */
   // $sentinels = ['tcp://'.$host.':26379?password='.$pwd];
   $sentinels = ['tcp://'.$host.':26379'];
-  /* 6379=RO ; 26379=RW */
   $options = [ 
       'replication' => 'sentinel', 
       'service' => 'mymaster' , 
