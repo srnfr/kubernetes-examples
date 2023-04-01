@@ -24,17 +24,11 @@ auth:
 master:
   persistence: 
     enabled: false
-  initContainers: []
-    persistence: 
-      enabled: false
 ##
 replica:
   replicaCount: 3
   persistence: 
     enabled: false
-  initContainers: []
-    persistence: 
-      enabled: false
 ##
 
 ##
