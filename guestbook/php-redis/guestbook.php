@@ -22,7 +22,7 @@ if (isset($_GET['cmd']) === true) {
   header('Content-Type: application/json');
   
   /* predis bug : https://github.com/predis/predis/issues/658 */
-  $sentinels = ['tcp://'.$host.':26379?password=redis-password'];
+  $sentinels = ['tcp://'.$host.':26379?password='.$pwd];
   /* 6379=RO ; 26379=RW */
   $options = [ 
       'replication' => 'sentinel', 
