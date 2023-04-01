@@ -29,9 +29,9 @@ spec:
           # info, comment out the 'value: dns' line above, and uncomment the
           # line below:
           value: env
-        - name: REDIS_MASTER_SERVICE_HOST
+        - name: REDIS_SENTINEL_SERVICE_HOST
           value: redis
-        - name: REDIS_SLAVE_SERVICE_HOST
-          value: redis
+        - name: REDIS_PWD
+          value: redis-password
         ports:
         - containerPort: 80
