@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: php-redis
-        image: reytans/guestbook-ng:33
+        image: reytans/guestbook-ng:34
         resources:
           requests:
             cpu: 100m
