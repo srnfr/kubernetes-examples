@@ -16,7 +16,7 @@ if (isset($_GET['cmd']) === true) {
   
   /* predis bug : https://github.com/predis/predis/issues/658 */
   $sentinels = ['tcp://'.$host.':26379?password=redis-password'];
-  /* 6379=RO ; 26379=RW
+  /* 6379=RO ; 26379=RW */
   $options = [ 
       'replication' => 'sentinel', 
       'service' => 'mymaster' , 
