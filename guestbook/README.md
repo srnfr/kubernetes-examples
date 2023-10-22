@@ -5,8 +5,9 @@ Guestbook application.
 
 Follow the tutorial at https://kubernetes.io/docs/tutorials/stateless-application/guestbook/.
 
-In this branch deploy the Resid Sentinel Cluster with helm :
+# In this branch deploy the Redis Sentinel Cluster with HELM :
 
+```
 helm repo add bitnami https://charts.bitnami.com/bitnami
-
-helm install redis -f https://raw.githubusercontent.com/srnfr/kubernetes-examples/frontend-with-env/guestbook/redis-values.yaml bitnami/redis
+helm install redis -f https://raw.githubusercontent.com/srnfr/kubernetes-examples/frontend-with-env/guestbook/redis-values.yaml  bitnami/redis
+```
